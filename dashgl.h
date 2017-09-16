@@ -23,66 +23,124 @@
 
 #ifndef DASHGL_UTILS
 #define DASHGL_UTILS
-
-	/**********************************************************************/
-	/** Typedef                                                          **/	
-	/**********************************************************************/
-
-	typedef float mat4[16];
-	typedef float vec3[3];
-
-	/**********************************************************************/
-	/** Constants                                                        **/	
-	/**********************************************************************/
-
-	#define M_00 0
-	#define M_10 1
-	#define M_20 2
-	#define M_30 3
-	#define M_01 4
-	#define M_11 5
-	#define M_21 6
-	#define M_31 7
-	#define M_02 8
-	#define M_12 9
-	#define M_22 10
-	#define M_32 11
-	#define M_03 12
-	#define M_13 13
-	#define M_23 14
-	#define M_33 15
-
+	
 	/**********************************************************************/
 	/** Shader Utilities                                                 **/	
 	/**********************************************************************/
+	
+	void shader_print_log(GLuint object);
+	GLuint shader_load_file(const char *filename, GLenum type);
+	GLuint shader_load_program(const char *vertex, const char *fragment);
+	GLuint shader_load_texture(const char *filename);
+	
+	/**********************************************************************/
+	/** Vector2 Utilities                                                **/	
+	/**********************************************************************/
 
-	GLuint dash_create_shader(const char *filename, GLenum type);
-	void dash_print_log(GLuint object);
-	GLuint dash_create_program(const char *vertex, const char *fragment);
-	GLuint dash_texture_load(const char *filename);
+	// Define Type
+
+	typedef float vec2[2];
 	
 	/**********************************************************************/
 	/** Vector3 Utilities                                                **/	
 	/**********************************************************************/
 
-	void vec3_subtract(vec3 a, vec3 b, vec3 v);
-	void vec3_cross_multiply(vec3 a, vec3 b, vec3 v);
-	void vec3_normalize(vec3 a, vec3 v);
+	// Define Type
+
+	typedef float vec3[3];
+
+	void vec3_subtract(vec3 a, vec3 b, vec3 dst);
+	void vec3_multiply(vec3 a, vec3 b, vec3 dst);
+	void vec3_normalize(vec3 a, vec3 dst);
 	
 	/**********************************************************************/
-	/** Matrix Utilities                                                 **/	
+	/** Matrix3 Utilities                                                **/	
 	/**********************************************************************/
 
-	void mat4_identity(mat4 m);
-	void mat4_copy(mat4 a, mat4 m);
-	void mat4_translate(vec3 t, mat4 m);
-	void mat4_rotate_x(float x, mat4 m);
-	void mat4_rotate_y(float y, mat4 m);
-	void mat4_rotate_z(float z, mat4 m);
-	void mat4_multiply(mat4 a, mat4 b, mat4 m);
-	void mat4_rotate(vec3 r, mat4 m);
-	void mat4_look_at(vec3 eye, vec3 center, vec3 up, mat4 m);
-	void mat4_perspective(float y_fov, float aspect, float n, float f, mat4 m);
-	void mat4_orthographic(int left, int right, int top, int bottom, mat4 m);
+	// Define Type
+
+	typedef float mat4[3];
+	
+	#define M3_00 0
+	#define M3_01 1
+	#define M3_02 2
+	#define M3_10 3
+	#define M3_11 4
+	#define M3_12 5
+	#define M3_20 6
+	#define M3_21 7
+	#define M3_22 8
+
+	// Basic Utility
+
+	void mat3_identity(mat3 dst);
+	void mat3_copy(mat3 src, mat3 dst);
+	void mat3_multiply(mat3 a, mat3 b, mat3 dst);
+	
+	// Transformation Matrices
+
+	void mat3_scale(mat4 a, vec2 scl, mat3 dst);
+	void mat3_translate(mat4 a, vec2 pos, mat3 dst);
+	void mat3_rotate_x(mat3 a, float x, mat3 dst);
+	void mat3_rotate_y(mat3 a, float y, mat3 dst);
+	void mat3_rotate_xy(mat3 a, vec2 rot, mat3 dst);
+	void mat3_transform(mat3 a, vec2 scl, vec2 pos, vec2 rot, mat3 dst);
+
+	// Projection Matrices 
+
+	void mat3_orthographic(int width, int height, mat3 dst);
+
+	/**********************************************************************/
+	/** Matrix4 Utilities                                                **/	
+	/**********************************************************************/
+
+	// Define Type
+
+	typedef float mat4[16];
+
+	// Constants
+
+	#define M4_00 0
+	#define M4_10 1
+	#define M4_20 2
+	#define M4_30 3
+	#define M4_01 4
+	#define M4_11 5
+	#define M4_21 6
+	#define M4_31 7
+	#define M4_02 8
+	#define M4_12 9
+	#define M4_22 10
+	#define M4_32 11
+	#define M4_03 12
+	#define M4_13 13
+	#define M4_23 14
+	#define M4_33 15
+
+	// Basic Utility
+
+	void mat4_identity(mat4 dst);
+	void mat4_copy(mat4 src, mat4 dst);
+	void mat4_multiply(mat4 a, mat4 b, mat4 dst);
+	
+	// Transformation Matrices
+
+	void mat4_scale(mat4 a, vec3 scl, mat4 dst);
+	void mat4_translate(mat4 a, vec3 pos, mat4 dst);
+	void mat4_rotate_x(mat4 a, float x, mat4 dst);
+	void mat4_rotate_y(mat4 a, float y, mat4 dst);
+	void mat4_rotate_z(mat4 a, float z, mat4 dst);
+	void mat4_rotate_xyz(mat4 a, vec3 rot, mat4 dst);
+	void mat4_transform(mat4 a, vec3 scl, vec3 pos, vec3 rot, mat4 dst);
+
+	// Projection Matrices 
+
+	void mat4_lookat(vec3 eye, vec3 center, vec3 up, mat4 dst);
+	void mat4_perspective(float y_fov, float aspect, float near, float far, mat4 dst);
+	void mat4_orthographic(float left, float right, float top, float bottom, mat4 dst);
+
+	/**********************************************************************/
+	/** End Library Definitions                                          **/	
+	/**********************************************************************/
 
 #endif
