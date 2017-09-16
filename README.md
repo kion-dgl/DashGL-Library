@@ -1,15 +1,18 @@
 # DashGL
-Basic Matrix Manipulation Library For OpenGL Written in C
+* Basic Vector and Matrix Manipulation Library
+* Compatible with OpenGL
+* Written in C
+* MIT License
 
-## Documentation
+### Documentation
 
 wiki on github
 
-## Tutorials
+### Tutorials
 
 view on dashgl
 
-## Quick Start
+### Quick Start
 
 clone and compile
 
