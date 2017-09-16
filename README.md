@@ -18,16 +18,12 @@ clone and compile
 
 ### Install for Ubuntu, Debian
 
-todo
+```
+$ sudo apt-get install libXmu-dev libXi-dev libgl-dev dos2unix git wget
+```
 
-### Install for Arch
+### Install for Fedora
 
-todo
-
-### Install for Fedora, CentOS
-
-todo
-
-### Install for OpenSuse
-
-todo
+```
+$ sudo yum install libXmu-devel libXi-devel libGL-devel dos2unix git wget
+```
