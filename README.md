@@ -19,11 +19,11 @@ clone and compile
 ### Install for Ubuntu, Debian
 
 ```
-$ sudo apt-get install libXmu-dev libXi-dev libgl-dev dos2unix git wget
+$ sudo apt-get install libXmu-dev libXi-dev libgl-dev dos2unix git wget libpng-dev
 ```
 
 ### Install for Fedora
 
 ```
-$ sudo yum install libXmu-devel libXi-devel libGL-devel dos2unix git wget
+$ sudo yum install libXmu-devel libXi-devel libGL-devel dos2unix git wget libpng
 ```
