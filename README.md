@@ -6,24 +6,22 @@
 
 ### Documentation
 
-wiki on github
+- wiki on github
 
 ### Tutorials
 
-view on dashgl
+- view on dashgl.com
 
 ### Quick Start
 
-clone and compile
+- git clone
+- cd
+- make
+- make install
 
-### Install for Ubuntu, Debian
-
-```
-$ sudo apt-get install libXmu-dev libXi-dev libgl-dev dos2unix git wget libpng-dev
-```
-
-### Install for Fedora
+### Dependencies for Ubuntu, Debian
 
 ```
-$ sudo yum install libXmu-devel libXi-devel libGL-devel dos2unix git wget libpng
+$ sudo apt-get install libgtk-3-dev libegl1-mesa-dev libpng-dev
 ```
+
