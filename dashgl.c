@@ -275,6 +275,15 @@ void vec2_print(vec2 coord) {
 /** Vec3 Utilities                                                   **/	
 /**********************************************************************/
 
+void vec3_copy(vec3 in, vec3 out) {
+
+	out[0] = in[0];
+	out[1] = in[1];
+	out[2] = in[2];
+
+}
+
+
 void vec3_subtract(vec3 a, vec3 b, vec3 out) {
 	
 	vec3 tmp;
