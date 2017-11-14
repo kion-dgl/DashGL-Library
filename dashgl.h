@@ -73,6 +73,7 @@
 	/** Vector3 Utilities                                                **/	
 	/**********************************************************************/
 
+	void vec3_copy(vec3 in, vec3 out);
 	void vec3_subtract(vec3 a, vec3 b, vec3 out);
 	void vec3_cross_multiply(vec3 a, vec3 b, vec3 out);
 	void vec3_normalize(vec3 in, vec3 out);
