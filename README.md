@@ -1,7 +1,5 @@
 # DashGL
 
-![Libbie the Cyber Oryx by TysonTan](https://github.com/kion-dgl/DashGL-Library/blob/master/fig/dashgl_mascot.png?raw=true)
-
 DashGL is basic vector and matrix manipulation library written in C. It is designed to be compatible with OpenGL and centers around the concept that everything is an array. A 2d vertor is a float array with a length of two. A 3d vector is a float array with a length of three. 4d vectors and quarternions are a float array with a length of four. And four by four matrices are represented with a float array of sixteen. All of the calculations that use these types are performed by utlizing the numbered elements of these arrays. The result is a small simple library that doesn't use malloc and doesn't need any conversion when working with OpenGL. DashGL is available under the MIT license.
 
 ### Documentation
