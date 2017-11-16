@@ -52,5 +52,5 @@ int main() {
 
 Then to compile:
 ```
-$ gcc main.c DashGL/dashgl.o
+$ gcc main.c DashGL/dashgl.o -lGL -lepoxy -lpng
 ```
