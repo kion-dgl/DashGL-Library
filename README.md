@@ -6,12 +6,12 @@ DashGL is basic vector and matrix manipulation library written in C. It is desig
 
 The documentation is a work in progress and will continued to be updated as I implement more of the library. The library is divided into several different parts defined by a given prefix.
 
-*Shader* - Pertains to compiling shaders, compiling programs, fetching errors, and loading images.
-*vec2* - 2D vectors
-*vec3* - 3D vectors
-*vec4* - 4D Vectors
-*quat* - Quarternion's
-*mat4* - 4x4 Matrices
+*Shader* - Pertains to compiling shaders, compiling programs, fetching errors, and loading images  
+*vec2* - 2D vectors  
+*vec3* - 3D vectors  
+*vec4* - 4D Vectors  
+*quat* - Quarternion's  
+*mat4* - 4x4 Matrices  
 
 ### Tutorials
 
