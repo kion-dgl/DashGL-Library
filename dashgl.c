@@ -375,6 +375,69 @@ void mat4_copy(mat4 in, mat4 out) {
 
 }
 
+void mat4_rotate_x(float x, mat4 out) {
+
+	out[M4_00] = 1.0f;
+	out[M4_01] = 0.0f;
+	out[M4_02] = 0.0f;
+	out[M4_03] = 0.0f;
+	out[M4_10] = 0.0f;
+	out[M4_11] = cos(x);
+	out[M4_12] =-sin(x);
+	out[M4_13] = 0.0f;
+	out[M4_20] = 0.0f;
+	out[M4_21] = sin(x);
+	out[M4_22] = cos(x);
+	out[M4_23] = 0.0f;
+	out[M4_30] = 0.0f;
+	out[M4_31] = 0.0f;
+	out[M4_32] = 0.0f;
+	out[M4_33] = 1.0f;
+
+}
+
+void mat4_rotate_y(float y, mat4 out) {
+
+	out[M4_00] = cos(y);
+	out[M4_01] = 0.0f;
+	out[M4_02] = sin(y);
+	out[M4_03] = 0.0f;
+	out[M4_10] = 0.0f;
+	out[M4_11] = 1.0f;
+	out[M4_12] = 0.0f;
+	out[M4_13] = 0.0f;
+	out[M4_20] =-sin(y);
+	out[M4_21] = 0.0f;
+	out[M4_22] = cos(y);
+	out[M4_23] = 0.0f;
+	out[M4_30] = 0.0f;
+	out[M4_31] = 0.0f;
+	out[M4_32] = 0.0f;
+	out[M4_33] = 1.0f;
+
+}
+
+void mat4_rotate_z(float z, mat4 out) {
+
+	out[M4_00] = cos(z);
+	out[M4_01] =-sin(z);
+	out[M4_02] = 0.0f;
+	out[M4_03] = 0.0f;
+	out[M4_10] = sin(z);
+	out[M4_11] = cos(z);
+	out[M4_12] = 0.0f;
+	out[M4_13] = 0.0f;
+	out[M4_20] = 0.0f;
+	out[M4_21] = 0.0f;
+	out[M4_22] = 1.0f;
+	out[M4_23] = 0.0f;
+	out[M4_30] = 0.0f;
+	out[M4_31] = 0.0f;
+	out[M4_32] = 0.0f;
+	out[M4_33] = 1.0f;
+
+}
+
 void mat4_multiply(mat4 a, mat4 b, mat4 out) {
 
 	mat4 tmp;
@@ -461,6 +524,74 @@ void mat4_orthagonal(float width, float height, mat4 out) {
 	out[M4_13] = -(top + bottom)*inv_y;
 	out[M4_23] = -(zFar + zNear)*inv_z;
 	out[M4_33] = 1.0f;
+
+}
+
+void mat4_lookat(vec3 eye, vec3 center, vec3 up, mat4 out) {
+	
+	mat4 a;
+	vec3 f, s, t;
+	
+	vec3_subtract(center, eye, f);
+	vec3_normalize(f, f);
+
+	vec3_cross_multiply(f, up, s);
+	vec3_normalize(s, s);
+
+	vec3_cross_multiply(s, f, t);
+
+	out[M4_00] = s[0];
+	out[M4_10] = t[0];
+	out[M4_20] =-f[0];
+	out[M4_30] = 0.0f;
+
+	out[M4_01] = s[1];
+	out[M4_11] = t[1];
+	out[M4_21] =-f[1];
+	out[M4_31] = 0.0f;
+
+	out[M4_02] = s[2];
+	out[M4_12] = t[2];
+	out[M4_22] = -f[2];
+	out[M4_32] = 0.0f;
+
+	out[M4_03] = 0.0f;
+	out[M4_13] = 0.0f;
+	out[M4_23] = 0.0f;
+	out[M4_33] = 1.0f;
+
+	eye[0] = -eye[0];
+	eye[1] = -eye[1];
+	eye[2] = -eye[2];
+
+	mat4_translate(eye, a);
+	mat4_multiply(out, a, out);
+
+}
+
+void mat4_perspective(float y_fov, float aspect, float n, float f, mat4 out) {
+
+	float const a = 1.f / (float) tan(y_fov / 2.f);
+
+	out[M4_00] = a / aspect;
+	out[M4_01] = 0.0f;
+	out[M4_02] = 0.0f;
+	out[M4_03] = 0.0f;
+
+	out[M4_01] = 0.0f;
+	out[M4_11] = a;
+	out[M4_21] = 0.0f;
+	out[M4_31] = 0.0f;
+
+	out[M4_02] = 0.0f;
+	out[M4_12] = 0.0f;
+	out[M4_22] = -((f + n) / (f - n));
+	out[M4_32] = -1.0f;
+
+	out[M4_03] = 0.0f;
+	out[M4_13] = 0.0f;
+	out[M4_23] = -((2.0f * f * n) / (f - n));
+	out[M4_33] = 0.0f;
 
 }
 

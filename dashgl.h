@@ -86,7 +86,12 @@
 	void mat4_copy(mat4 in, mat4 out);
 	void mat4_multiply(mat4 a, mat4 b, mat4 out);
 	void mat4_translate(vec3 pos, mat4 out);
+	void mat4_rotate_x(float x, mat4 out);
+	void mat4_rotate_y(float y, mat4 out);
+	void mat4_rotate_z(float z, mat4 out);
 	void mat4_orthagonal(float width, float height, mat4 out);
+	void mat4_lookat(vec3 eye, vec3 center, vec3 up, mat4 out) ;
+	void mat4_perspective(float y_fov, float aspect, float n, float f, mat4 out);
 
 	/**********************************************************************/
 	/** End Library Definitions                                          **/	
