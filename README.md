@@ -1,4 +1,4 @@
-# DashGL
+# DashGL - Matrix Library
 
 ![DashGL Matrix Libary](https://repository-images.githubusercontent.com/86554823/aee6e27c-0517-4566-8d2e-7a31bcb04d1d)
 
